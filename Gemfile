@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# gem 'sqlite3'
-
+gem 'thin'
+gem 'jquery-rails'
+gem 'active_link_to'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,18 +22,23 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development, :test do
+  # gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+end
 
 group :test do
   gem 'sqlite3'
+  gem 'capybara'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
-group :development do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'thin'
+group :development, :production do
   gem 'pg'
 end
 
